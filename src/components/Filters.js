@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../stylesheets/filter.scss'
+
 
 function Filters(props) {
   const handleSearch = (ev) => {
@@ -9,13 +11,14 @@ function Filters(props) {
     console.log(props)
   }
   return (
-    <React.Fragment>
-      <label htmlFor="buscar">Busca tu personaje</label>
+    <div className='filter__container'>
+      <label className='filter__label' htmlFor="buscar">Busca tu personaje</label>
       <input
         type="text"
-        placeholder='Introduce el nombre'
+        placeholder='Ej. MariCarmen'
+        className='filter__input'
         onChange={handleSearch} />
-    </React.Fragment>
+    </div>
   )
 }
 Filters.propTypes = {

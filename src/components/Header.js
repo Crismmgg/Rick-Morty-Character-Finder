@@ -2,14 +2,15 @@ import React from 'react';
 import Filters from './Filters';
 import logo from '../images/logo.png';
 import PropTypes from 'prop-types';
+import '../stylesheets/header.scss'
 
 
 function Header(props) {
   return (
-    <React.Fragment>
-      <img src={logo} alt="logo" />
+    <div className='header-container'>
+      <img src={logo} alt="logo" className='logo img-fluid' />
       <Filters handleSearch={props.handleSearch} />
-    </React.Fragment>
+    </div>
   )
 }
 

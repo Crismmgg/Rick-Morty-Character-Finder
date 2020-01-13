@@ -1,0 +1,27 @@
+@import '../scss/variables';
+.filter {
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  &__label {
+    align-items: center;
+    margin: 0;
+    font-family: $detailsFont;
+    font-size: 25px;
+    padding-right: 30px;
+  }
+  &__input {
+    width: 200px;
+    border-radius: 5px;
+    text-align: center;
+    background: $white;
+    font-family: $inputFont;
+    font-size: 25px;
+    color: $blue;
+    &:enabled {
+      border: solid $green;
+    }
+  }
+}

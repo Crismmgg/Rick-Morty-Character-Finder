@@ -1,14 +1,17 @@
 import React from 'react';
-import CharacterCard from './CharacterCard'
+import CharacterCard from './CharacterCard';
+import '../stylesheets/list.scss';
 import PropTypes from 'prop-types';
 
 
 function CharacterList(props) {
   const { filteredCharacters } = props
   return (
-    <ul>
-      <CharacterCard characters={filteredCharacters} />
-    </ul>
+    <div className='container'>
+      <ul className='row container__list justify-content-center'>
+        <CharacterCard characters={filteredCharacters} />
+      </ul>
+    </div>
   )
 }
 CharacterList.propTypes = {

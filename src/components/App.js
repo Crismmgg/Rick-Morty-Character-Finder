@@ -1,5 +1,5 @@
 import React from 'react';
-import '../stylesheets/App.css';
+import '../stylesheets/App.scss';
 import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import FetchCharacter from '../services/FetchCharacter';
@@ -65,7 +65,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app-container">
         <Header
           handleSearch={this.handleSearch}
         />
