@@ -14,15 +14,22 @@
   &__name {
     color: $black;
   }
-  &__img {
-    width: 300px;
-    height: 300px;
-    padding: 20px;
-  }
   &__container {
+    text-align: center;
     background: $blue;
-    display: flex;
     align-items: center;
+    @media all and (min-width: 768px) {
+      display: flex;
+    }
+  }
+  &__img {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    @media all and (min-width: 768px) {
+      width: 300px;
+      height: 300px;
+    }
   }
   &__info {
     justify-content: center;

@@ -1,8 +1,8 @@
 import React from 'react';
-import '../stylesheets/App.scss';
+import '../stylesheets/app.scss';
 import { Route, Switch } from 'react-router-dom';
-import Header from './Header';
 import FetchCharacter from '../services/FetchCharacter';
+import Header from './Header';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
 
@@ -14,7 +14,6 @@ class App extends React.Component {
       inputValue: ''
     }
   }
-
 
   componentDidMount() {
     FetchCharacter().then(charData => {
@@ -35,6 +34,7 @@ class App extends React.Component {
   }
 
   //filter
+
   filteredCharacters() {
     const characters = [...this.state.characters]
     if (this.state.inputValue === '') {
@@ -48,6 +48,7 @@ class App extends React.Component {
   }
 
   //render
+
   renderCharDetails = (props) => {
     const routeId = parseInt(props.match.params.id);
     console.log(routeId)

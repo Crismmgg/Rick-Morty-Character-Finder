@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 function CharacterList(props) {
   const { filteredCharacters } = props
   return (
-    <div className='container'>
-      <ul className='row container__list justify-content-center'>
+    <div className='container '>
+      <ul className='row  container__list justify-content-center'>
         <CharacterCard characters={filteredCharacters} />
       </ul>
     </div>

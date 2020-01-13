@@ -20,7 +20,7 @@ function CharacterDetails(props) {
       < li className='detail'>
         <h2 className='detail__name'>{name}</h2>
         <div className='detail__container'>
-          <img className='detail__img' src={image} alt={name} />
+          <img className='detail__img img-fluid' src={image} alt={name} />
           <div className='detail__info'>
             <p className='detail__specie'>Especie: {species} {isAlien}</p>
             <p className='detail__planet'>Planeta de origen: {origin.name}</p>
