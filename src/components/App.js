@@ -58,7 +58,8 @@ class App extends React.Component {
     if (character === undefined) {
       return <p>El personaje no existe</p>
     } else {
-      return <CharacterDetails characters={character} />
+      return <CharacterDetails
+        characters={character} />
     }
   }
 

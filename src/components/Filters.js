@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Filters(props) {
   const handleSearch = (ev) => {
     props.handleSearch({
       inputValue: ev.target.value
     })
-
+    console.log(props)
   }
   return (
     <React.Fragment>
@@ -17,5 +18,9 @@ function Filters(props) {
     </React.Fragment>
   )
 }
+Filters.propTypes = {
+  handleSearch: PropTypes.func
+}
+
 
 export default Filters;

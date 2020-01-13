@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function CharacterCard(props) {
+  const { characters } = props
+
   return (
     <React.Fragment>
-      {props.characters.map(character => {
+      {characters.map(character => {
         const { id, image, name, species } = character
         const route = `/char/${id}`
 
@@ -22,5 +25,8 @@ function CharacterCard(props) {
       })}
     </React.Fragment>
   )
+}
+CharacterCard.propTypes = {
+  characters: PropTypes.arrayOf(PropTypes.object)
 }
 export default CharacterCard;
