@@ -4,6 +4,9 @@
   background: $black;
   border: $green solid 1px;
   font-family: $cardsFont;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &__btn {
     text-align: center;
