@@ -1,9 +1,11 @@
 @import '../scss/variables';
+
 .filter {
   &__container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
   }
   &__label {
     align-items: center;
@@ -24,4 +26,8 @@
       border: solid $green;
     }
   }
+}
+.radio-value {
+  font-family: $detailsFont;
+  font-size: 20px;
 }

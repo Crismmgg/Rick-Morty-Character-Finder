@@ -12,6 +12,12 @@ function Filters(props) {
       inputValue: ev.target.value
     })
   }
+
+  const handleStatus = (ev) => {
+    props.handleStatus({
+      inputStatus: ev.target.value
+    })
+  }
   return (
     <div className='filter__container'>
       <form action="" onSubmit={handleSubmit}>
@@ -22,6 +28,23 @@ function Filters(props) {
           className='filter__input'
           onChange={handleSearch}
           value={props.state.inputValue} />
+
+        <label className='filter__label'>Estado de tu personaje: </label>
+
+        <label htmlFor="status" className='radio-value mr-2 ml-2' >Vivo</label>
+        <input type="radio" name='status' value='Alive' onChange={handleStatus} checked={props.checked === 'Alive'} />
+
+        <label htmlFor="status" className='radio-value mr-2 ml-4' >Muerto</label>
+        <input type="radio" name='status' value='Dead' onChange={handleStatus} checked={props.checked === 'Dead'} />
+
+        <label htmlFor="status" className='radio-value mr-2 ml-4'>Desconocido</label>
+        <input type="radio" name='status' value='unknown' onChange={handleStatus}
+          checked={props.checked === 'unknown'} />
+
+        <label htmlFor="status" className='radio-value mr-2 ml-4' >Todos</label>
+        <input type="radio" name='status' value='' onChange={handleStatus} checked={props.checked === ''} />
+
+
       </form>
     </div>
   )

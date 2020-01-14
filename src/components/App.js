@@ -14,6 +14,8 @@ class App extends React.Component {
     this.state = {
       characters: [],
       inputValue: '',
+      inputStatus: '',
+      checked: '',
       loading: true
     }
   }
@@ -37,24 +39,34 @@ class App extends React.Component {
   //handler
 
   handleSearch = (inputValue) => {
-    this.setState({
+    this.setState(
       inputValue
-    })
+    )
   }
+
+  handleStatus = (inputStatus) => {
+    this.setState(
+      inputStatus,
+    )
+  }
+
 
   //filter
 
   filteredCharacters() {
     const characters = [...this.state.characters]
-    if (this.state.inputValue === '') {
-      return characters
-    } else {
-      return characters.filter(character => {
-        return character.name.toLowerCase().includes(this.state.inputValue.inputValue.toLowerCase())
-      }
-      )
-    }
+    const status = this.state.inputStatus
+    const search = this.state.inputValue
+    return characters
+      .filter(character => {
+        return character.name.toLowerCase().includes(search.toLowerCase())
+      })
+      .filter(character => {
+        return status === '' ? true : character.status === status
+      })
+
   }
+
 
   //render
 
@@ -84,7 +96,9 @@ class App extends React.Component {
               <Route exact path='/'>
                 <Filters
                   handleSearch={this.handleSearch}
-                  state={this.state.inputValue} />
+                  handleStatus={this.handleStatus}
+                  state={this.state.inputValue}
+                  checked={this.state.inputStatus} />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />
               </Route>
