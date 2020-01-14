@@ -27,7 +27,7 @@ function Filters(props) {
           placeholder='Ej. MariCarmen'
           className='filter__input'
           onChange={handleSearch}
-          value={props.state.inputValue} />
+          value={props.state} />
 
         <label className='filter__label'>Estado de tu personaje: </label>
 
