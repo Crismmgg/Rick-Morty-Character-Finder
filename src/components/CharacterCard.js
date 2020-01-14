@@ -12,7 +12,6 @@ function CharacterCard(props) {
       {characters.map(character => {
         const { id, image, name, species } = character
         const route = `/char/${id}`
-
         return (
           <React.Fragment>
             <li key={id} className='card p-3 m-2 col-5 col-sm-3 col-lg-2 text-center ' >
