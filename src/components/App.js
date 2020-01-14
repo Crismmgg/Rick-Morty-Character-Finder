@@ -5,21 +5,30 @@ import FetchCharacter from '../services/FetchCharacter';
 import Header from './Header';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
+import Loader from './Loader';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       characters: [],
-      inputValue: ''
+      inputValue: '',
+      loading: true
     }
   }
 
   componentDidMount() {
     FetchCharacter().then(charData => {
-      this.setState({
-        characters: charData,
-      })
+      if (charData === undefined) {
+        this.setState({
+          loading: true
+        })
+      } else {
+        this.setState({
+          characters: charData,
+          loading: false
+        })
+      }
     }
     )
   }
@@ -67,17 +76,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
-        <Header
-          handleSearch={this.handleSearch}
-        />
-        <Switch>
-          <Route exact path='/'>
-            <CharacterList
-              filteredCharacters={this.filteredCharacters()} />
-          </Route>
-          <Route path='/char/:id' render={this.renderCharDetails}>
-          </Route>
-        </Switch>
+        {this.state.loading
+          ? (<Loader />)
+          : (<>
+            <Header
+              handleSearch={this.handleSearch}
+            />
+            <Switch>
+              <Route exact path='/'>
+                <CharacterList
+                  filteredCharacters={this.filteredCharacters()} />
+              </Route>
+              <Route path='/char/:id' render={this.renderCharDetails}>
+              </Route>
+            </Switch>
+          </>)
+        }
       </div>
     );
   }
