@@ -3,6 +3,7 @@ import '../stylesheets/App.scss';
 import { Route, Switch } from 'react-router-dom';
 import FetchCharacter from '../services/FetchCharacter';
 import Header from './Header';
+import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
 import Loader from './Loader';
@@ -39,7 +40,6 @@ class App extends React.Component {
     this.setState({
       inputValue
     })
-    console.log(inputValue)
   }
 
   //filter
@@ -60,11 +60,9 @@ class App extends React.Component {
 
   renderCharDetails = (props) => {
     const routeId = parseInt(props.match.params.id);
-    console.log(routeId)
     const character = this.state.characters.find(item => {
       return item.id === routeId
     })
-    console.log(routeId, this.state.characters, character)
     if (character === undefined) {
       return <p>El personaje no existe</p>
     } else {
@@ -84,6 +82,9 @@ class App extends React.Component {
             />
             <Switch>
               <Route exact path='/'>
+                <Filters
+                  handleSearch={this.handleSearch}
+                  state={this.state.inputValue} />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />
               </Route>
