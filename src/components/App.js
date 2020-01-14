@@ -1,5 +1,4 @@
 import React from 'react';
-import '../stylesheets/App.scss';
 import { Route, Switch } from 'react-router-dom';
 import FetchCharacter from '../services/FetchCharacter';
 import Header from './Header';
@@ -7,6 +6,8 @@ import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
 import Loader from './Loader';
+import '../stylesheets/App.scss';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class App extends React.Component {
       inputValue: '',
       inputStatus: '',
       checked: '',
+      inputSpecie: '',
+      select: '',
       loading: true
     }
   }
@@ -50,6 +53,13 @@ class App extends React.Component {
     )
   }
 
+  handleSpecie = (inputSpecie) => {
+
+    this.setState(
+      inputSpecie
+    )
+  }
+
 
   //filter
 
@@ -57,12 +67,16 @@ class App extends React.Component {
     const characters = [...this.state.characters]
     const status = this.state.inputStatus
     const search = this.state.inputValue
+    const specie = this.state.inputSpecie
     return characters
       .filter(character => {
         return character.name.toLowerCase().includes(search.toLowerCase())
       })
       .filter(character => {
         return status === '' ? true : character.status === status
+      })
+      .filter(character => {
+        return specie === '' ? true : character.species === specie
       })
 
   }
@@ -84,6 +98,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.inputSpecie, this.state.inputStatus)
     return (
       <div className="app-container">
         {this.state.loading
@@ -97,8 +112,11 @@ class App extends React.Component {
                 <Filters
                   handleSearch={this.handleSearch}
                   handleStatus={this.handleStatus}
+                  handleSpecie={this.handleSpecie}
                   state={this.state.inputValue}
-                  checked={this.state.inputStatus} />
+                  checked={this.state.inputStatus}
+                  specie={this.state.inputSpecie}
+                  select={this.state.inputSpecie} />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />
               </Route>

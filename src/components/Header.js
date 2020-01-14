@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../images/logo.png';
-import PropTypes from 'prop-types';
 import '../stylesheets/header.scss'
+import PropTypes from 'prop-types';
 
 
 function Header() {

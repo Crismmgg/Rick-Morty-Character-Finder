@@ -3,17 +3,16 @@ import '../stylesheets/details.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import { faUserCheck, faSkullCrossbones, faQuestionCircle, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-
-
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 
 
 
 function CharacterDetails(props) {
   const { name, image, species, origin, episode, status } = props.characters
+
   const isAlien = species === 'Alien' ? <FontAwesomeIcon icon={faRedditAlien} /> : <FontAwesomeIcon icon={faUserCheck} />
+
   const whatStatus = () => {
     if (status === 'Alive') {
       return <FontAwesomeIcon icon={faThumbsUp} />
