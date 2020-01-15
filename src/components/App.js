@@ -16,6 +16,7 @@ class App extends React.Component {
       inputValue: '',
       inputStatus: '',
       checked: '',
+      inputLocal: '',
       loading: true
     }
   }
@@ -49,20 +50,29 @@ class App extends React.Component {
       inputStatus,
     )
   }
-
+  handleLocal = (inputLocal) => {
+    this.setState(
+      inputLocal,
+    )
+  }
 
   //filter
 
   filteredCharacters() {
     const characters = [...this.state.characters]
+    console.log(characters)
     const status = this.state.inputStatus
     const search = this.state.inputValue
+    const local = this.state.inputLocal
     return characters
       .filter(character => {
         return character.name.toLowerCase().includes(search.toLowerCase())
       })
       .filter(character => {
         return status === '' ? true : character.status === status
+      })
+      .filter(character => {
+        return character.location.name.toLowerCase().includes(local.toLowerCase())
       })
 
   }
@@ -97,8 +107,11 @@ class App extends React.Component {
                 <Filters
                   handleSearch={this.handleSearch}
                   handleStatus={this.handleStatus}
+                  handleLocal={this.handleLocal}
+                  local={this.state.inputLocal}
                   state={this.state.inputValue}
-                  checked={this.state.inputStatus} />
+                  checked={this.state.inputStatus}
+                />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />
               </Route>

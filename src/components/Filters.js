@@ -4,6 +4,7 @@ import '../stylesheets/filter.scss'
 
 
 function Filters(props) {
+  console.log(props.local)
   const handleSubmit = (ev) => {
     ev.preventDefault();
   }
@@ -17,6 +18,12 @@ function Filters(props) {
     props.handleStatus({
       inputStatus: ev.target.value
     })
+  }
+  const handleLocal = (ev) => {
+    props.handleLocal({
+      inputLocal: ev.target.value
+    })
+
   }
   return (
     <div className='filter__container'>
@@ -43,7 +50,12 @@ function Filters(props) {
 
         <label htmlFor="status" className='radio-value mr-2 ml-4' >Todos</label>
         <input type="radio" name='status' value='' onChange={handleStatus} checked={props.checked === ''} />
-
+        <label className='filter__label' >Localización</label>
+        <input type="text"
+          className='filter__input'
+          placeholder='Ej Tierra'
+          onChange={handleLocal}
+          value={props.local} />
 
       </form>
     </div>
