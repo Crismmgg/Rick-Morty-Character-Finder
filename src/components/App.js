@@ -18,7 +18,6 @@ class App extends React.Component {
       inputStatus: '',
       checked: '',
       inputSpecie: '',
-      select: '',
       loading: true
     }
   }
@@ -116,7 +115,7 @@ class App extends React.Component {
                   state={this.state.inputValue}
                   checked={this.state.inputStatus}
                   specie={this.state.inputSpecie}
-                  select={this.state.inputSpecie} />
+                />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />
               </Route>
