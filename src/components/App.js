@@ -18,8 +18,6 @@ class App extends React.Component {
       inputStatus: '',
       checked: '',
       inputSpecie: '',
-      inputEarth: '',
-      // inputGender: [],
       loading: true
     }
   }
@@ -60,11 +58,6 @@ class App extends React.Component {
     )
   }
 
-  handleEarth = (inputEarth) => {
-    this.setState(
-      inputEarth
-    )
-  }
   handleReset = () => {
     this.setState({
       inputValue: '',
@@ -73,12 +66,6 @@ class App extends React.Component {
     }
     )
   }
-  // handleGender = (inputGender) => {
-  //   this.setState(
-  //     inputGender
-  //   )
-  // }
-
 
   //filter
 
@@ -88,7 +75,6 @@ class App extends React.Component {
     const search = this.state.inputValue
     const specie = this.state.inputSpecie
     const earth = this.state.inputEarth
-    // const gender = this.state.inputGender
     return characters
       .filter(character => {
         return character.name.toLowerCase().includes(search.toLowerCase())
@@ -99,23 +85,6 @@ class App extends React.Component {
       .filter(character => {
         return specie === '' ? true : character.species === specie
       })
-      .filter(character => {
-        if (character.origin.name.toLowerCase().includes(earth.toLowerCase())) {
-          return character
-        }
-      })
-    // .filter(character => {
-    //   const result = character.findIndex(item => item === gender)
-    //   if (result < 0) {
-    //     gender.push(gender)
-    //   } else {
-    //     gender.splice(result, 1)
-    //   }
-    //   return {
-    //     gender: result
-    //   }
-    // })
-
   }
 
 
@@ -150,14 +119,10 @@ class App extends React.Component {
                   handleSearch={this.handleSearch}
                   handleStatus={this.handleStatus}
                   handleSpecie={this.handleSpecie}
-                  handleEarth={this.handleEarth}
                   handleReset={this.handleReset}
-                  // handleGender={this.handleGender}
                   state={this.state.inputValue}
                   checked={this.state.inputStatus}
                   specie={this.state.inputSpecie}
-                  earth={this.state.inputEarth}
-                // checkedGender={this.state.inputGender}
                 />
                 <CharacterList
                   filteredCharacters={this.filteredCharacters()} />

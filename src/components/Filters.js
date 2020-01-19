@@ -6,7 +6,6 @@ import { faUserCheck, faStar, faTrash } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
 
 
-
 function Filters(props) {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -26,19 +25,6 @@ function Filters(props) {
       inputSpecie: ev.target.value
     })
   }
-
-  const handleEarth = (ev) => {
-    props.handleEarth({
-      inputEarth: ev.target.value
-    })
-  }
-
-  // const handleGender = (ev) => {
-  //   props.handleGender({
-  //     inputGender: ev.target.value
-  //   })
-  // }
-
 
   const icon = () => {
     if (props.specie === 'Alien') {
@@ -121,47 +107,8 @@ function Filters(props) {
           </select>
         </div>
 
-        <div className='filter__earth'>
-          <label
-            htmlFor="earth"
-            className='filter__label mr-2 ml-4'
-          > Terrícolas</label>
-          <input
-            type="checkbox"
-            id='earth'
-            value='Earth'
-            onChange={handleEarth}
-          />
-        </div>
-
-
         <button className='reset mt-2'
           onClick={props.handleReset}>RESET  <FontAwesomeIcon icon={faTrash} className='reset__icon mt-1' /> </button>
-
-
-
-        {/* <div className='filter__gender'>
-          <label className='filter__label' htmlFor="gender">Género:</label>
-          <label
-            htmlFor="female"
-            className='label-value mr-2 ml-4'
-          > Femenino</label>
-          <input
-            type="checkbox"
-            id='female'
-            value='Female'
-            onChange={handleGender} />
-          <label
-            htmlFor="male"
-            className='label-value mr-2 ml-4'
-          > Masculino</label>
-          <input
-            type="checkbox"
-            id='male'
-            value='Male'
-            onChange={handleGender} />
-
-        </div> */}
       </form>
     </div >
   )
