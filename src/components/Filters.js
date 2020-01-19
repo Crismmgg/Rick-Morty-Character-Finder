@@ -2,7 +2,7 @@ import React from 'react';
 import '../stylesheets/filter.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
-import { faUserCheck, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faUserCheck, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 
@@ -26,6 +26,19 @@ function Filters(props) {
       inputSpecie: ev.target.value
     })
   }
+
+  const handleEarth = (ev) => {
+    props.handleEarth({
+      inputEarth: ev.target.value
+    })
+  }
+
+  // const handleGender = (ev) => {
+  //   props.handleGender({
+  //     inputGender: ev.target.value
+  //   })
+  // }
+
 
   const icon = () => {
     if (props.specie === 'Alien') {
@@ -55,7 +68,7 @@ function Filters(props) {
           <label className='filter__label'>Estado: </label>
           <label
             htmlFor="status"
-            className='radio-value mr-2 ml-2' >Vivo</label>
+            className='label-value mr-2 ml-2' >Vivo</label>
           <input
             type="radio"
             name='status'
@@ -64,7 +77,7 @@ function Filters(props) {
             checked={props.checked === 'Alive'} />
           <label
             htmlFor="status"
-            className='radio-value mr-2 ml-4' >Muerto</label>
+            className='label-value mr-2 ml-4' >Muerto</label>
           <input
             type="radio"
             name='status'
@@ -73,7 +86,7 @@ function Filters(props) {
             checked={props.checked === 'Dead'} />
           <label
             htmlFor="status"
-            className='radio-value mr-2 ml-4'>Desconocido</label>
+            className='label-value mr-2 ml-4'>Desconocido</label>
           <input type="radio"
             name='status'
             value='unknown'
@@ -81,7 +94,7 @@ function Filters(props) {
             checked={props.checked === 'unknown'} />
           <label
             htmlFor="status"
-            className='radio-value mr-2 ml-4' >Todos</label>
+            className='label-value mr-2 ml-4' >Todos</label>
           <input
             type="radio"
             name='status'
@@ -107,6 +120,48 @@ function Filters(props) {
             >Alien  </option>
           </select>
         </div>
+
+        <div className='filter__earth'>
+          <label
+            htmlFor="earth"
+            className='filter__label mr-2 ml-4'
+          > Terrícolas</label>
+          <input
+            type="checkbox"
+            id='earth'
+            value='Earth'
+            onChange={handleEarth}
+          />
+        </div>
+
+
+        <button className='reset mt-2'
+          onClick={props.handleReset}>RESET  <FontAwesomeIcon icon={faTrash} className='reset__icon mt-1' /> </button>
+
+
+
+        {/* <div className='filter__gender'>
+          <label className='filter__label' htmlFor="gender">Género:</label>
+          <label
+            htmlFor="female"
+            className='label-value mr-2 ml-4'
+          > Femenino</label>
+          <input
+            type="checkbox"
+            id='female'
+            value='Female'
+            onChange={handleGender} />
+          <label
+            htmlFor="male"
+            className='label-value mr-2 ml-4'
+          > Masculino</label>
+          <input
+            type="checkbox"
+            id='male'
+            value='Male'
+            onChange={handleGender} />
+
+        </div> */}
       </form>
     </div >
   )

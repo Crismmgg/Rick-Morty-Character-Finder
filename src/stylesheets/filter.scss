@@ -31,7 +31,25 @@
     }
   }
 }
-.radio-value {
+.label-value {
   font-family: $detailsFont;
   font-size: 20px;
+}
+
+.reset {
+  width: 80px;
+  border-radius: 10px;
+  font-family: $inputFont;
+  font-size: 20px;
+  color: $black;
+  border: $green solid 1px;
+
+  &:hover {
+    background-color: $green;
+    box-shadow: 0 4px 16px $white;
+    transition: all 0.2s ease;
+  }
+  &__icon {
+    color: $green;
+  }
 }
